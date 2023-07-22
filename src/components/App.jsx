@@ -25,7 +25,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<PrivateRoute component={ContactList} />} />
-          <Route path="bookform" element={<Bookform />} />
+          <Route
+            path="bookform"
+            element={<PrivateRoute component={Bookform} />}
+          />
           <Route
             path="signin"
             element={<RestrictedRoute component={Registration} />}

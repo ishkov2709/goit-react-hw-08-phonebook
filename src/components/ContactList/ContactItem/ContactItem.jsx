@@ -79,16 +79,6 @@ const ContactItem = ({ id, name, number, i }) => {
           >
             {number}
           </Typography>
-          <Button
-            type="button"
-            name="delete"
-            sx={{ color: '#237bff' }}
-            onClick={() => {
-              dispatch(deleteContact(id));
-            }}
-          >
-            <DeleteIcon fontSize="large" />
-          </Button>
         </AccordionSummary>
         <AccordionDetails>
           <EditForm onSubmit={formik.handleSubmit}>
@@ -106,6 +96,16 @@ const ContactItem = ({ id, name, number, i }) => {
             />
             <Button type="submit">
               <CheckIcon fontSize="large" />
+            </Button>
+            <Button
+              type="button"
+              name="delete"
+              sx={{ color: '#237bff' }}
+              onClick={() => {
+                dispatch(deleteContact(id));
+              }}
+            >
+              <DeleteIcon fontSize="large" />
             </Button>
           </EditForm>
         </AccordionDetails>

@@ -10,6 +10,7 @@ const LogIn = lazy(() => import('./LogIn'));
 const Registration = lazy(() => import('./Registration'));
 const ContactList = lazy(() => import('./ContactList'));
 const Bookform = lazy(() => import('./BookForm'));
+const NotFound = lazy(() => import('./NotFound'));
 
 export const App = () => {
   const isRefreshing = useSelector(state => state.auth.isRefreshing);
@@ -38,6 +39,7 @@ export const App = () => {
             element={<RestrictedRoute component={Registration} />}
           />
           <Route path="login" element={<RestrictedRoute component={LogIn} />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     )

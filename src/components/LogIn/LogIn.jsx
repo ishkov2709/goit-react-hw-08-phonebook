@@ -36,7 +36,7 @@ const LogIn = () => {
         {error?.includes('LOGIN') && (
           <Typography
             variant="p"
-            sx={{ alignSelf: 'center', color: '#fd4010' }}
+            sx={{ alignSelf: 'center', color: '#ec3a0d' }}
           >
             Email or password entered incorrectly
           </Typography>

@@ -40,7 +40,7 @@ const Registration = () => {
         Sign In
       </Typography>
       {error?.includes('REGISTER') && (
-        <Typography variant="p" sx={{ alignSelf: 'center', color: '#fd4010' }}>
+        <Typography variant="p" sx={{ alignSelf: 'center', color: '#ec3a0d' }}>
           Incorrect data entered
         </Typography>
       )}

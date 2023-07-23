@@ -4,6 +4,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import { List } from '@mui/material';
 import { fetchContacts } from 'store/operations';
 import { useEffect } from 'react';
+import { AccentText, EmptyInfo, EmptyWrapper } from './ContactList.styled';
+import { TbHandClick } from 'react-icons/tb';
 
 const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);
@@ -42,6 +44,17 @@ const ContactList = () => {
             <ContactItem key={id} id={id} name={name} number={number} i={i} />
           ))}
       </List>
+    );
+
+  if (!loading && !contacts.length)
+    return (
+      <EmptyWrapper>
+        <EmptyInfo variant="h5" component="span">
+          Add your first contact by clicking on
+          <AccentText> "Add Contact"</AccentText>
+        </EmptyInfo>
+        <TbHandClick size={22} color="#929292" />
+      </EmptyWrapper>
     );
 };
 

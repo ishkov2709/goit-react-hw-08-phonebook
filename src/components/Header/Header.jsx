@@ -30,7 +30,7 @@ const Header = () => {
               <>
                 <Nav>
                   <Link to="/bookform">Add Contact</Link>
-                  <Link to="/">Contacts</Link>
+                  <Link to="/contacts">Contacts</Link>
                 </Nav>
 
                 <FilterForm />

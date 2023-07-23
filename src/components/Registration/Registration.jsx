@@ -2,11 +2,15 @@ import { TextField, Typography } from '@mui/material';
 import LockIcon from '@mui/icons-material/Lock';
 import { Btn, Form } from './Registration.styled';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'store/operations';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Registration = () => {
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const error = useSelector(state => state.auth.error);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -19,9 +23,12 @@ const Registration = () => {
     onSubmit: values => {
       dispatch(register(values));
       formik.resetForm();
-      navigate('/');
     },
   });
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+  }, [isLoggedIn, navigate]);
 
   return (
     <Form onSubmit={formik.handleSubmit}>
@@ -32,6 +39,11 @@ const Registration = () => {
       <Typography variant="h5" sx={{ alignSelf: 'center' }}>
         Sign In
       </Typography>
+      {error?.includes('REGISTER') && (
+        <Typography variant="p" sx={{ alignSelf: 'center', color: '#fd4010' }}>
+          Incorrect data entered
+        </Typography>
+      )}
       <TextField
         autoComplete="given-name"
         name="name"
